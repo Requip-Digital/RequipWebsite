@@ -11,7 +11,7 @@ export function Footer() {
               <span className="text-xl font-bold text-blue-600 font-ethnocentric">REQUIP</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              Delivering production-ready weaving machines restored to original performance standards with genuine
+              Delivering production ready weaving machines restored to original performance standards with genuine
               components and comprehensive support across India and China.
             </p>
           </div>
@@ -25,18 +25,18 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#about" className="text-muted-foreground hover:text-foreground">
-                  About
+                <Link href="#choose" className="text-muted-foreground hover:text-foreground">
+                  Why Choose Us
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="text-muted-foreground hover:text-foreground">
-                  Services
+                <Link href="#process" className="text-muted-foreground hover:text-foreground">
+                  Our Process
                 </Link>
               </li>
               <li>
-                <Link href="#pricing" className="text-muted-foreground hover:text-foreground">
-                  Pricing
+                <Link href="#contact" className="text-muted-foreground hover:text-foreground">
+                  Contact Us
                 </Link>
               </li>
             </ul>
