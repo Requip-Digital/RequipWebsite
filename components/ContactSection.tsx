@@ -41,11 +41,13 @@ export function ContactSection() {
         body: JSON.stringify(formData),
       })
 
+      const data = await response.json()
+
       if (!response.ok) {
-        throw new Error("Failed to send message")
+        throw new Error(data.error || "Failed to send message")
       }
 
-      toast.success("Message sent successfully!")
+      toast.success("Message sent successfully! We'll get back to you within 24 hours.")
       setFormData({
         firstName: "",
         lastName: "",
@@ -55,7 +57,8 @@ export function ContactSection() {
         _honeypot: "",
       })
     } catch (error) {
-      toast.error("Failed to send message. Please try again.")
+      const errorMessage = error instanceof Error ? error.message : "Failed to send message. Please try again."
+      toast.error(errorMessage)
     } finally {
       setIsSubmitting(false)
     }
@@ -168,6 +171,20 @@ export function ContactSection() {
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
+                <div className="mt-4 flex gap-2">
+                  <Button
+                    variant="outline"
+                    onClick={() => toast.success("This is a success message!")}
+                  >
+                    Test Success
+                  </Button>
+                  <Button
+                    variant="outline"
+                    onClick={() => toast.error("This is an error message!")}
+                  >
+                    Test Error
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </div>
