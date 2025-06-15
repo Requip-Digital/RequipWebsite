@@ -8,9 +8,8 @@ const ethnocentric = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  title: 'Requip App',
+  description: 'Created with next.js',
 }
 
 export default function RootLayout({
