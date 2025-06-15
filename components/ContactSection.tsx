@@ -186,7 +186,7 @@ export function ContactSection() {
                   <Phone className="h-5 w-5 text-blue-600" />
                   <div>
                     <p className="font-medium">Phone</p>
-                    <p className="text-sm text-muted-foreground">+91 98765 43210</p>
+                    <p className="text-sm text-muted-foreground">+91 95290 47929</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -206,18 +206,18 @@ export function ContactSection() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <MapPinIcon className="h-5 w-5 text-blue-600 mt-0.5" />
+                  <MapPinIcon className="h-8 w-8 text-blue-600 mt-0.5" />
                   <div>
                     <p className="font-medium">India Office</p>
-                    <p className="text-sm text-muted-foreground">123 Industrial Area, Mumbai, Maharashtra 400001</p>
+                    <p className="text-sm text-muted-foreground">702, Falcon Crest, Don Bosco High School, Borivali West, Mumbai, Maharashtra, India, 400091</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <MapPinIcon className="h-5 w-5 text-blue-600 mt-0.5" />
+                  <MapPinIcon className="h-8 w-8 text-blue-600 mt-0.5" />
                   <div>
                     <p className="font-medium">China Office</p>
                     <p className="text-sm text-muted-foreground">
-                      456 Manufacturing District, Guangzhou, Guangdong 510000
+                    702, Falcon Crest, Don Bosco High School, Borivali West, Mumbai, Maharashtra, India, 400091
                     </p>
                   </div>
                 </div>
