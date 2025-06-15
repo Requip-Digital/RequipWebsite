@@ -75,7 +75,7 @@ export function ContactSection() {
         </div>
         <div className="mx-auto grid max-w-5xl items-start gap-6 py-12 lg:grid-cols-2 lg:gap-12">
           <div className="space-y-6">
-            <Card>
+            <Card className="border-blue-200">
               <CardHeader>
                 <CardTitle>Send us a Message</CardTitle>
                 <CardDescription>
