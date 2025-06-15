@@ -16,6 +16,7 @@ export function ContactSection() {
     email: "",
     phone: "",
     message: "",
+    _honeypot: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -51,6 +52,7 @@ export function ContactSection() {
         email: "",
         phone: "",
         message: "",
+        _honeypot: "",
       })
     } catch (error) {
       toast.error("Failed to send message. Please try again.")
@@ -147,6 +149,15 @@ export function ContactSection() {
                       value={formData.message}
                       onChange={handleChange}
                       required
+                    />
+                  </div>
+                  <div style={{ display: 'none' }}>
+                    <Input
+                      id="_honeypot"
+                      value={formData._honeypot}
+                      onChange={handleChange}
+                      tabIndex={-1}
+                      autoComplete="off"
                     />
                   </div>
                   <Button
