@@ -6,10 +6,21 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "*.{js,ts,jsx,tsx,mdx}"
+    "*.{js,ts,jsx,tsx,mdx}",
+    './src/**/*.{ts,tsx}',
   ],
   theme: {
   	extend: {
+  		container: {
+  			center: true,
+  			padding: "2rem",
+  			screens: {
+  				"2xl": "1400px",
+  			},
+  		},
+  		fontFamily: {
+  			ethnocentric: ['var(--font-ethnocentric)'],
+  		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

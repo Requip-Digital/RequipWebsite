@@ -8,10 +8,7 @@ export function Footer() {
         <div className="grid gap-8 lg:grid-cols-4">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="flex items-center justify-center w-8 h-8 bg-blue-600 rounded-lg">
-                <Settings className="h-5 w-5 text-white" />
-              </div>
-              <span className="text-xl font-bold text-blue-600">REQUIP</span>
+              <span className="text-xl font-bold text-blue-600 font-ethnocentric">REQUIP</span>
             </div>
             <p className="text-sm text-muted-foreground">
               Delivering production-ready weaving machines restored to original performance standards with genuine

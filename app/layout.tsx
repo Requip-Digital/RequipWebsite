@@ -1,5 +1,11 @@
 import type { Metadata } from 'next'
+import localFont from 'next/font/local'
 import './globals.css'
+
+const ethnocentric = localFont({
+  src: '../public/fonts/ethnocentric.otf',
+  variable: '--font-ethnocentric',
+})
 
 export const metadata: Metadata = {
   title: 'v0 App',
@@ -14,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={ethnocentric.variable}>{children}</body>
     </html>
   )
 }

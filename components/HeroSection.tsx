@@ -13,7 +13,7 @@ export function HeroSection() {
                 Premium Weaving Machines, Production-Ready
               </h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                REQUIP delivers fully operational weaving machines restored to like-new performance standards. With
+                We offer fully operational weaving machines restored to like-new performance standards. With
                 operations across India and China, we ensure every machine meets original manufacturer
                 specifications using only genuine and high-grade compatible components.
               </p>
