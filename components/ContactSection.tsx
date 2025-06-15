@@ -171,20 +171,6 @@ export function ContactSection() {
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
-                <div className="mt-4 flex gap-2">
-                  <Button
-                    variant="outline"
-                    onClick={() => toast.success("This is a success message!")}
-                  >
-                    Test Success
-                  </Button>
-                  <Button
-                    variant="outline"
-                    onClick={() => toast.error("This is an error message!")}
-                  >
-                    Test Error
-                  </Button>
-                </div>
               </CardContent>
             </Card>
           </div>
