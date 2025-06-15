@@ -72,7 +72,7 @@ export function Footer() {
               <Link href="#" className="text-muted-foreground hover:text-foreground">
                 <Twitter className="h-5 w-5" />
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground">
+              <Link href="https://www.linkedin.com/company/requip-digital-private-limited/about/" className="text-muted-foreground hover:text-foreground">
                 <Linkedin className="h-5 w-5" />
               </Link>
               <Link href="#" className="text-muted-foreground hover:text-foreground">

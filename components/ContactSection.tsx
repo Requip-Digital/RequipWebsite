@@ -193,7 +193,7 @@ export function ContactSection() {
                   <Mail className="h-5 w-5 text-blue-600" />
                   <div>
                     <p className="font-medium">Email</p>
-                    <p className="text-sm text-muted-foreground">info@requip.com</p>
+                    <p className="text-sm text-muted-foreground">nikunj@requip.in</p>
                   </div>
                 </div>
               </CardContent>
