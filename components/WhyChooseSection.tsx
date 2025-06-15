@@ -83,8 +83,8 @@ export function WhyChooseSection() {
             </CardHeader>
           </Card>
           <Card className="relative overflow-hidden lg:col-span-3 h-full">
-            <CardHeader className="h-full text-center">
-              <Headphones className="h-10 w-15 text-blue-600 mx-auto" />
+            <CardHeader className="h-full md:text-center">
+              <Headphones className="h-10 w-15 text-blue-600 md:mx-auto" />
               <CardTitle>Post-Sales Support & Accountability</CardTitle>
               <CardDescription>
                 Dedicated support team ensures your satisfaction long after purchase with ongoing assistance and
