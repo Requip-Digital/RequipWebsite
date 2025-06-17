@@ -79,15 +79,49 @@ export async function POST(req: Request) {
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_TO,
       subject: `New Contact Form Submission from ${firstName} ${lastName}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-        <p><small>IP: ${ip}</small></p>
-      `,
+      html: `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>New Contact Submission</title>
+  </head>
+  <body style="margin: 0; padding: 0; background-color: #f4f4f4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+
+    <table cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f4f4; padding: 40px 0;">
+      <tr>
+        <td>
+          <table align="center" cellpadding="0" cellspacing="0" width="600" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+            <tr style="background-color: #3E82F8;">
+              <td style="padding: 30px 40px; text-align: center; color: #ffffff;">
+                <h1 style="margin: 0; font-family: 'Ethnocentric', sans-serif; font-size: 28px; letter-spacing: 1px;">REQUIP</h1>
+                <p style="margin: 5px 0 0; font-size: 14px;">New Contact Form Submission</p>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding: 30px 40px; color: #333333;">
+                <p style="margin: 0 0 15px;"><strong>Name:</strong> ${firstName} ${lastName}</p>
+                <p style="margin: 0 0 15px;"><strong>Email:</strong> ${email}</p>
+                <p style="margin: 0 0 15px;"><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+                <p style="margin: 0 0 10px;"><strong>Message:</strong></p>
+                <p style="margin: 0 0 25px; background-color: #f0f4ff; padding: 15px; border-left: 4px solid #3E82F8; border-radius: 4px;">${message}</p>
+                <p style="margin: 0; font-size: 12px; color: #999;">IP Address: ${ip}</p>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="background-color: #fafafa; padding: 20px 40px; text-align: center; font-size: 12px; color: #aaa;">
+                <p style="margin: 0;">&copy; ${new Date().getFullYear()} REQUIP. All rights reserved.</p>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+
+  </body>
+</html>`,
     }
 
     await transporter.sendMail(mailOptions)
