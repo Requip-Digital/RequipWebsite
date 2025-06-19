@@ -13,8 +13,8 @@ export function HeroSection() {
                 Your Next Production Ready Weaving Machine
               </h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl text-center lg:text-left mx-auto lg:mx-0">
-                We offer fully operational weaving machines restored to like-new performance standards. With operations
-                across India and China, we ensure every machine meets original manufacturer specifications using only
+                We offer fully operational used weaving machines restored to like-new performance standards. With operations
+                across India, we ensure every machine meets original manufacturer specifications using only
                 genuine and high-grade compatible components.
               </p>
             </div>
@@ -29,7 +29,7 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-2 sm:space-y-0 sm:space-x-4 text-sm text-muted-foreground">
               <div className="flex items-center space-x-1">
                 <MapPin className="h-4 w-4" />
-                <span>India & China Operations</span>
+                <span>Mumbai & Surat Operations</span>
               </div>
               <div className="flex items-center space-x-1">
                 <Shield className="h-4 w-4" />

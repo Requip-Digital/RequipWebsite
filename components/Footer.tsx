@@ -11,8 +11,8 @@ export function Footer() {
               <span className="text-xl font-bold text-blue-600 font-ethnocentric">REQUIP</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              Delivering production ready weaving machines restored to original performance standards with genuine
-              components and comprehensive support across India and China.
+              Delivering production ready used weaving machines restored to original performance standards with genuine
+              components and comprehensive support across India.
             </p>
           </div>
 

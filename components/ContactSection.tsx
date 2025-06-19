@@ -201,26 +201,26 @@ export function ContactSection() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Our Locations</CardTitle>
-                <CardDescription>Visit our display centers to see our machines in person.</CardDescription>
+                <CardTitle>Our Location</CardTitle>
+                <CardDescription>Visit our display center to see our machines in person.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <MapPinIcon className="h-8 w-8 text-blue-600 mt-0.5" />
                   <div>
-                    <p className="font-medium">India Office</p>
+                    <p className="font-medium">Mumbai Office</p>
                     <p className="text-sm text-muted-foreground">702, Falcon Crest, Don Bosco High School, Borivali West, Mumbai, Maharashtra, India, 400091</p>
                   </div>
                 </div>
-                <div className="flex items-start space-x-3">
+                {/* <div className="flex items-start space-x-3">
                   <MapPinIcon className="h-8 w-8 text-blue-600 mt-0.5" />
                   <div>
-                    <p className="font-medium">China Office</p>
+                    <p className="font-medium">Surat Office</p>
                     <p className="text-sm text-muted-foreground">
                     702, Falcon Crest, Don Bosco High School, Borivali West, Mumbai, Maharashtra, India, 400091
                     </p>
                   </div>
-                </div>
+                </div> */}
               </CardContent>
             </Card>
           </div>

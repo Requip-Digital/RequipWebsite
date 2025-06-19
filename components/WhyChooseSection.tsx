@@ -8,6 +8,8 @@ import {
   Eye,
   FileText,
   Headphones,
+  Award,
+  Tag,
 } from "lucide-react"
 
 export function WhyChooseSection() {
@@ -26,7 +28,7 @@ export function WhyChooseSection() {
             </p>
           </div>
         </div>
-        <div className="mx-auto grid max-w-5xl items-start gap-6 py-12 lg:grid-cols-3 lg:gap-8">
+        <div className="mx-auto grid max-w-5xl items-start gap-6 py-12 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-8">
           <Card className="relative overflow-hidden h-full">
             <CardHeader className="h-full">
               <Shield className="h-10 w-15 text-blue-600" />
@@ -68,7 +70,7 @@ export function WhyChooseSection() {
               <Eye className="h-10 w-15 text-blue-600" />
               <CardTitle>Complete Transparency</CardTitle>
               <CardDescription>
-                Full disclosure of restoration process, genuine parts certification, and comprehensive quality
+                Full disclosure of inspection and reconditioning process, genuine parts certification, and comprehensive quality
                 reports.
               </CardDescription>
             </CardHeader>
@@ -82,9 +84,18 @@ export function WhyChooseSection() {
               </CardDescription>
             </CardHeader>
           </Card>
-          <Card className="relative overflow-hidden lg:col-span-3 h-full">
-            <CardHeader className="h-full md:text-center">
-              <Headphones className="h-10 w-15 text-blue-600 md:mx-auto" />
+          <Card className="relative overflow-hidden h-full">
+            <CardHeader className="h-full">
+              <Tag className="h-10 w-15 text-blue-600" />
+              <CardTitle>Discounted Rates for Spare Parts</CardTitle>
+              <CardDescription>
+                Enjoy exclusive discounts on genuine spare parts as part of our commitment to long-term customer value.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="relative overflow-hidden h-full">
+            <CardHeader className="h-full">
+              <Headphones className="h-10 w-15 text-blue-600" />
               <CardTitle>Post-Sales Support & Accountability</CardTitle>
               <CardDescription>
                 Dedicated support team ensures your satisfaction long after purchase with ongoing assistance and
