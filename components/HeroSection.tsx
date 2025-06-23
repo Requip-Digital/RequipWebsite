@@ -13,7 +13,7 @@ export function HeroSection() {
                 Your Next Production Ready Weaving Machine
               </h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl text-center lg:text-left mx-auto lg:mx-0">
-                We offer fully operational used weaving machines restored to like-new performance standards. With operations
+                We offer fully operational used weaving machines reconditioned to like-new performance standards. With operations
                 across India, we ensure every machine meets original manufacturer specifications using only
                 genuine and high-grade compatible components.
               </p>

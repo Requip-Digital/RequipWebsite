@@ -11,7 +11,7 @@ export function HowWeWorkSection() {
             </Badge>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">How We Work</h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Our rigorous restoration process ensures every machine meets original manufacturer standards with
+              Our rigorous reconditioning process ensures every machine meets original manufacturer standards with
               certified components and validated performance.
             </p>
           </div>
@@ -24,8 +24,7 @@ export function HowWeWorkSection() {
             <div className="space-y-2">
               <h3 className="text-lg font-bold">35-Point Inspection</h3>
               <p className="text-sm text-muted-foreground">
-                Comprehensive 8-criterion evaluation against original manufacturer specifications and performance
-                benchmarks.
+              Eight-point, product-specific checklists ensure thorough evaluation against unique specs and manufacturer standards.
               </p>
             </div>
           </div>
@@ -36,7 +35,7 @@ export function HowWeWorkSection() {
             <div className="space-y-2">
               <h3 className="text-lg font-bold">Test Runs</h3>
               <p className="text-sm text-muted-foreground">
-                Extensive performance validation and quality certification to ensure like-new operational standards.
+                Extensive performance validation, including electrical & mechanical test runs, to ensure like-new quality standards.
               </p>
             </div>
           </div>

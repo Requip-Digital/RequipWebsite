@@ -28,7 +28,7 @@ export function WhyChooseSection() {
             </p>
           </div>
         </div>
-        <div className="mx-auto grid max-w-5xl items-start gap-6 py-12 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-8">
+        <div className="mx-auto grid max-w-5xl items-start gap-6 py-12 grid-cols-1 md:grid-cols-3 grid-rows-2 lg:gap-8">
           <Card className="relative overflow-hidden h-full">
             <CardHeader className="h-full">
               <Shield className="h-10 w-15 text-blue-600" />
@@ -50,9 +50,9 @@ export function WhyChooseSection() {
           <Card className="relative overflow-hidden h-full">
             <CardHeader className="h-full">
               <Package className="h-10 w-15 text-blue-600" />
-              <CardTitle>Spare Parts Availability</CardTitle>
+              <CardTitle>Genuine Spare Parts & Exclusive Discounts</CardTitle>
               <CardDescription>
-                Access to genuine spare parts ensures your machines stay operational for years to come.
+                Access genuine spare parts to keep your machines running for years, and enjoy exclusive discounts as part of our commitment to long-term customer value.
               </CardDescription>
             </CardHeader>
           </Card>
@@ -84,22 +84,12 @@ export function WhyChooseSection() {
               </CardDescription>
             </CardHeader>
           </Card>
-          <Card className="relative overflow-hidden h-full">
-            <CardHeader className="h-full">
-              <Tag className="h-10 w-15 text-blue-600" />
-              <CardTitle>Discounted Rates for Spare Parts</CardTitle>
-              <CardDescription>
-                Enjoy exclusive discounts on genuine spare parts as part of our commitment to long-term customer value.
-              </CardDescription>
-            </CardHeader>
-          </Card>
-          <Card className="relative overflow-hidden h-full">
-            <CardHeader className="h-full">
+          <Card className="relative overflow-hidden h-full col-span-1 md:col-span-3">
+            <CardHeader className="h-full flex flex-col items-center justify-center text-center">
               <Headphones className="h-10 w-15 text-blue-600" />
               <CardTitle>Post-Sales Support & Accountability</CardTitle>
               <CardDescription>
-                Dedicated support team ensures your satisfaction long after purchase with ongoing assistance and
-                accountability.
+                Dedicated support team ensures your satisfaction long after purchase with ongoing assistance and accountability.
               </CardDescription>
             </CardHeader>
           </Card>
