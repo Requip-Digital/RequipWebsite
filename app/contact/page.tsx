@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation"; // <-- import router
+import { useRouter } from "next/navigation"; 
 
 const contactSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -78,7 +78,7 @@ export default function ContactPage() {
             <Link href="/" className="hover:text-blue-600">Home</Link>
             <Link href="/buy" className="hover:text-blue-600">Buy</Link>
             <Link href="/sell" className="hover:text-blue-600">Sell</Link>
-            <Link href="/career" className="hover:text-blue-600">Career</Link>
+            <Link href="/career" className="hover:text-blue-600">Careers</Link>
             <Link href="/contact" className="text-blue-600 font-semibold">Contact</Link>
           </nav>
 
@@ -100,7 +100,7 @@ export default function ContactPage() {
             <Link href="/" onClick={() => setMenuOpen(false)} className="block hover:text-blue-600">Home</Link>
             <Link href="/buy" onClick={() => setMenuOpen(false)} className="block hover:text-blue-600">Buy</Link>
             <Link href="/sell" onClick={() => setMenuOpen(false)} className="block hover:text-blue-600">Sell</Link>
-            <Link href="/career" onClick={() => setMenuOpen(false)} className="block hover:text-blue-600">Career</Link>
+            <Link href="/career" onClick={() => setMenuOpen(false)} className="block hover:text-blue-600">Careers</Link>
             <Link href="/contact" onClick={() => setMenuOpen(false)} className="block text-blue-600 font-semibold">Contact</Link>
           </div>
         )}

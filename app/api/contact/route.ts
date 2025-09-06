@@ -16,7 +16,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // --- Save message in MongoDB ---
+    
     await client.connect();
     const db = client.db("ContactMessagesDB");
     await db.collection("contactMessages").insertOne({
@@ -26,7 +26,7 @@ export async function POST(req: Request) {
       createdAt: new Date(),
     });
 
-    // --- Configure nodemailer transporter ---
+    
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
       port: Number(process.env.EMAIL_PORT),
@@ -37,11 +37,11 @@ export async function POST(req: Request) {
       },
     });
 
-    // --- 1️⃣ Send notification to admin ---
+   
     await transporter.sendMail({
       from: `"Requip Contact" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_TO,
-      subject: `📩 New Contact Form Submission`,
+      subject: `New Contact Form Submission`,
       html: `
         <h3>New Contact Request</h3>
         <p><strong>Name:</strong> ${name}</p>
@@ -50,7 +50,7 @@ export async function POST(req: Request) {
       `,
     });
 
-    // --- 2️⃣ Send confirmation to user ---
+    
     await transporter.sendMail({
       from: `"Requip Team" <${process.env.EMAIL_USER}>`,
       to: email,

@@ -8,10 +8,10 @@ export async function POST(req: Request) {
     const data = await req.json();
     await connectToDatabase();
 
-    // 1️⃣ Save to DB
+    
     const newSellRequest = await SellRequest.create(data);
 
-    // 2️⃣ Setup mail transporter
+  
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 587,
@@ -22,11 +22,11 @@ export async function POST(req: Request) {
       },
     });
 
-    // 3️⃣ Send email to Admin
+    
     await transporter.sendMail({
       from: `"Requip" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_TO,
-      subject: "📩 New Sell Machine Request",
+      subject: "New Sell Machine Request",
       html: `
         <h2>New Sell Request Received</h2>
         <p><strong>Name:</strong> ${data.name}</p>
@@ -42,7 +42,7 @@ export async function POST(req: Request) {
       `,
     });
 
-    // 4️⃣ Send confirmation email to User
+    
     await transporter.sendMail({
       from: `"Requip" <${process.env.EMAIL_USER}>`,
       to: data.email,

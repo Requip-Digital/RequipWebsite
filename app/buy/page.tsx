@@ -29,7 +29,7 @@ export default function BuyPage() {
           {/* Logo */}
           <div className="flex items-center gap-2 flex-shrink-0">
             <Image
-              src="/images/BrandLogo.png" // <-- replace with your logo path
+              src="/images/BrandLogo.png" 
               alt="Requip Logo"
               width={35}
               height={35}
