@@ -10,7 +10,7 @@ export const jobs = [
   {
     id: "2",
     title: "Sales Manager",
-    location: "Bangalore, India",
+    location: "Surat and Bhiwandi, India",
     type: "Full-time",
     description: "We are seeking an experienced Sales Manager to drive revenue growth and manage client relationships. Responsibilities include developing sales strategies, managing a sales team, achieving targets, and ensuring customer satisfaction. Prior experience in B2B sales is highly desirable."
   }

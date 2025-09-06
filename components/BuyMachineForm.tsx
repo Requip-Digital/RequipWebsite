@@ -12,7 +12,7 @@ const formSchema = z.object({
   brand: z.string().optional(),
   model: z.string().optional(),
   width: z.string().optional(),
-  shieldingSystem: z.string().optional(),
+  sheddingSystem: z.string().optional(),
   additionalInfo: z.string().optional(),
   name: z.string().min(1, "Name is required"),
   phone: z.string().min(10, "Phone must be at least 10 digits"),
@@ -29,19 +29,15 @@ const technologyBrandMap: Record<string, string[]> = {
 
 // ✅ Brand → Technology → Model mapping
 const brandModelMap: Record<string, Record<string, string[]>> = {
-  Toyota: {
-    Airjet: ["JAT 610", "JAT 710", "JAT 810", "JAT 910"],
-  },
+  Toyota: { Airjet: ["JAT 610", "JAT 710", "JAT 810", "JAT 910"] },
   Picanol: {
     Airjet: ["OmniPlus", "OmniPlus 800", "OmniPlus Summun", "OmniPlus i connect"],
     Rapier: ["GTM", "GTM AS", "Optimax", "OptiMax-i", "GTX Plus", "GT Max", "Gamma X"],
   },
   Tsudakoma: {
-    Airjet: ["ZAX", "ZAX E", "ZAX N", "ZAX 9100", "ZAX 9200", "ZAX 9200i connect"],
+    Airjet: ["ZAX", "ZAX E", "ZAX N", "ZAX 9100", "ZAX 9200i", "ZAX 9200i Master"],
   },
-  Somet: {
-    Rapier: ["Thema Super Excel", "Thema Excel", "SM92", "SM93", "Thema 11"],
-  },
+  Somet: { Rapier: ["Thema Super Excel", "Thema Excel", "SM92", "SM93", "Thema 11"] },
   Vamatex: {
     Rapier: [
       "Leonardo Silver 501",
@@ -57,10 +53,26 @@ const brandModelMap: Record<string, Record<string, string[]>> = {
       "SP 1151",
     ],
   },
-  ITEMA: {
-    Rapier: ["R9500", "R9000", "R8800", "Silver365"],
-  },
+  ITEMA: { Rapier: ["R9500", "R9000", "R8800"] },
 };
+
+// ✅ Function to dynamically determine shedding options
+function getSheddingOptions(technology: string | null, brand: string | null) {
+  if (!technology) return [];
+
+  if (technology === "Airjet") {
+    if (brand === "Toyota") {
+      return ["Cam", "Dobby", "Crank", "Jacquard", "E-shedding"];
+    }
+    return ["Cam", "Dobby", "Crank", "Jacquard"];
+  }
+
+  if (technology === "Rapier") {
+    return ["Cam", "Dobby", "Jacquard"];
+  }
+
+  return [];
+}
 
 export default function BuyForm() {
   const router = useRouter();
@@ -110,6 +122,11 @@ export default function BuyForm() {
       ? brandModelMap[selectedBrand]?.[selectedTechnology] || []
       : [];
 
+  const filteredSheddingSystems = getSheddingOptions(
+    selectedTechnology,
+    selectedBrand
+  );
+
   return (
     <div className="w-full max-w-3xl mx-auto p-6 font-Helvetica">
       <h2 className="text-4xl font-bold text-blue-600 mb-2 text-left">
@@ -135,6 +152,7 @@ export default function BuyForm() {
               setSelectedModel(null);
               setValue("brand", "");
               setValue("model", "");
+              setValue("sheddingSystem", "");
             }}
             className="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-600"
           >
@@ -163,6 +181,7 @@ export default function BuyForm() {
                     setValue("brand", brand);
                     setSelectedModel(null);
                     setValue("model", "");
+                    setValue("sheddingSystem", "");
                   }}
                   className={`px-4 py-2 border rounded-md ${
                     selectedBrand === brand
@@ -225,19 +244,20 @@ export default function BuyForm() {
         <div>
           <label className="block text-sm text-gray-700">Shedding System</label>
           <select
-            {...register("shieldingSystem")}
-            className="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-600"
+            {...register("sheddingSystem")}
+            disabled={!selectedTechnology}
+            className="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-600 disabled:bg-gray-100"
           >
             <option value="">Select</option>
-            <option value="Cam">Cam</option>
-            <option value="Dobby">Dobby</option>
-            <option value="Jacquard">Jacquard</option>
-            <option value="E-shedding">E-shedding</option>
-            <option value="Crank">Crank</option>
+            {filteredSheddingSystems.map((system) => (
+              <option key={system} value={system}>
+                {system}
+              </option>
+            ))}
           </select>
         </div>
 
-        {/* 6-8. Name, Phone, Email */}
+        {/* Name, Phone, Email */}
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1">
             <label className="block text-sm text-gray-700">Full Name</label>
@@ -246,9 +266,7 @@ export default function BuyForm() {
               className="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-600"
             />
             {errors.name && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.name.message}
-              </p>
+              <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
             )}
           </div>
           <div className="flex-1">
@@ -258,9 +276,7 @@ export default function BuyForm() {
               className="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-600"
             />
             {errors.phone && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.phone.message}
-              </p>
+              <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
             )}
           </div>
           <div className="flex-1">
@@ -270,14 +286,12 @@ export default function BuyForm() {
               className="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-600"
             />
             {errors.email && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.email.message}
-              </p>
+              <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
             )}
           </div>
         </div>
 
-        {/* 9. Additional Info */}
+        {/* Additional Info */}
         <div>
           <label className="block text-sm font-bold text-gray-700">
             Additional Info
@@ -290,7 +304,6 @@ export default function BuyForm() {
           />
         </div>
 
-        {/* Submit */}
         <button
           type="submit"
           className="w-full bg-blue-600 hover:bg-blue-800 text-white py-3 rounded-md font-bold transition"
