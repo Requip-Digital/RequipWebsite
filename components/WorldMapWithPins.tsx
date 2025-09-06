@@ -36,7 +36,7 @@ export default function WorldMapWithLoopingLines() {
         className="w-full rounded-xl shadow-lg"
       />
 
-      {/* 📍 Pins */}
+      {/* 📍 Smaller Blinking Pins */}
       {locations.map((loc, index) => (
         <div
           key={index}
@@ -47,11 +47,20 @@ export default function WorldMapWithLoopingLines() {
             transform: "translate(-50%, -50%)",
           }}
         >
-          <div className="w-3 h-3 bg-red-500 rounded-full border-2 border-white shadow-lg" />
+          <motion.div
+            className="w-2 h-2 bg-red-500 rounded-full border border-white shadow"
+            animate={{ opacity: [1, 0.4, 1] }}
+            transition={{
+              repeat: Infinity,
+              duration: 2,
+              ease: "easeInOut",
+              delay: index * 0.2,
+            }}
+          />
         </div>
       ))}
 
-      {/* 🔄 Looping Lines Animation */}
+      {/* 🌐 Static Curved Lines with Slow Blink */}
       <svg
         className="absolute top-0 left-0 w-full h-full pointer-events-none"
         viewBox="0 0 1200 600"
@@ -63,30 +72,25 @@ export default function WorldMapWithLoopingLines() {
           const x2 = (center.x / 100) * 1200;
           const y2 = (center.y / 100) * 600;
 
-          const pathLength = Math.sqrt(
-            Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)
-          );
+          // Quadratic curve control point
+          const cx = (x1 + x2) / 2;
+          const cy = (y1 + y2) / 2 - 50;
+
+          const pathData = `M ${x1} ${y1} Q ${cx} ${cy}, ${x2} ${y2}`;
 
           return (
-            <motion.line
+            <motion.path
               key={i}
-              x1={x1}
-              y1={y1}
-              x2={x2}
-              y2={y2}
+              d={pathData}
               stroke="#2563EB"
-              strokeWidth="2"
-              strokeDasharray={pathLength}
-              strokeDashoffset={pathLength}
-              animate={{
-                strokeDashoffset: [pathLength, 0, 0, pathLength], // Draw → Hold → Reset
-              }}
+              strokeWidth="1.5"
+              fill="none"
+              animate={{ opacity: [1, 0.4, 1] }}
               transition={{
                 repeat: Infinity,
-                repeatType: "loop",
                 duration: 3,
                 ease: "easeInOut",
-                delay: i * 0.3, // stagger lines for nice effect
+                delay: i * 0.2,
               }}
             />
           );

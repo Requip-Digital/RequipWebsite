@@ -46,7 +46,7 @@ export default function BuyPage() {
             <a href="/" className="hover:text-blue-600">Home</a>
             <a href="/buy" className="text-blue-600 font-semibold">Buy</a>
             <a href="/sell" className="hover:text-blue-600">Sell</a>
-            <Link href="/career" className="hover:text-blue-600">Career</Link>
+            <Link href="/career" className="hover:text-blue-600">Careers</Link>
             <Link href="/contact" className="hover:text-blue-600">Contact</Link>
           </nav>
 
@@ -76,7 +76,7 @@ export default function BuyPage() {
             <a href="/" onClick={() => setMenuOpen(false)} className="hover:text-blue-600">Home</a>
             <a href="/buy" onClick={() => setMenuOpen(false)} className="text-blue-600 font-semibold">Buy</a>
             <a href="/sell" onClick={() => setMenuOpen(false)} className="hover:text-blue-600">Sell</a>
-            <a href="/career" onClick={() => setMenuOpen(false)} className="hover:text-blue-600">Career</a>
+            <a href="/career" onClick={() => setMenuOpen(false)} className="hover:text-blue-600">Careers</a>
             <a href="/contact" onClick={() => setMenuOpen(false)} className="hover:text-blue-600">Contact</a>
           </div>
         )}

@@ -21,7 +21,7 @@ type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function ContactPage() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const router = useRouter(); // <-- initialize router
+  const router = useRouter(); 
 
   const {
     register,
@@ -120,7 +120,7 @@ export default function ContactPage() {
         <div className="relative grid md:grid-cols-2 gap-10 max-w-5xl w-full bg-white/90 rounded-2xl shadow-xl p-8 md:p-12 backdrop-blur-sm">
           {/* Left Column - Info */}
           <div className="space-y-6">
-            <h2 className="text-4xl font-bold text-gray-800">Get in Touch</h2>
+            <h2 className="text-4xl font-bold text-gray-800 items-center">Get in Touch</h2>
             <p className="text-gray-600">Have questions or want to work with us? Fill out the form and we’ll get back to you.</p>
 
             <div className="space-y-4">
