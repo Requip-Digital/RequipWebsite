@@ -50,7 +50,7 @@ export default function ApplyPage() {
       });
 
       if (res.ok) {
-        router.push("/career/success");
+        router.push("/success");
       } else {
         alert("Failed to submit application.");
       }
