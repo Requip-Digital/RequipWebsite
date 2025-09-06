@@ -1,10 +1,15 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function SuccessPage() {
   const searchParams = useSearchParams();
-  const type = searchParams.get("type");
+  const [type, setType] = useState<string | null>(null);
+
+  useEffect(() => {
+    setType(searchParams.get("type"));
+  }, [searchParams]);
 
   const message =
     type === "sell"
