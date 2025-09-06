@@ -1,56 +1,115 @@
-import { Button } from "@/components/ui/button"
-import { MapPin, Shield } from "lucide-react"
-import Image from "next/image"
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { MapPin, Shield } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function HeroSection() {
+  const [offsetY, setOffsetY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setOffsetY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <section id="home" className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="grid gap-8 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] items-center">
-          <div className="flex flex-col justify-center space-y-6 order-2 lg:order-1">
-            <div className="space-y-6">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-6xl/none text-center lg:text-left">
-                Your Next Production Ready Weaving Machine
-              </h1>
-              <p className="max-w-[600px] text-muted-foreground md:text-xl text-center lg:text-left mx-auto lg:mx-0">
-                We offer fully operational used weaving machines reconditioned to like-new performance standards. With operations
-                across India, we ensure every machine meets original manufacturer specifications using only
-                genuine and high-grade compatible components.
-              </p>
+    <section
+      id="home"
+      className="relative min-h-[85vh] flex items-center 
+      bg-[linear-gradient(to_right,rgba(0,0,0,0.25)_2px,transparent_1px),
+      linear-gradient(to_bottom,rgba(0,0,0,0.25)_2px,transparent_1px)] 
+      bg-[size:80px_80px] bg-black/5 overflow-hidden"
+    >
+      <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center px-6 md:px-12 z-10">
+        
+        {/* ---------- LEFT CONTENT ---------- */}
+        <div className="space-y-6">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }} 
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl sm:text-5xl md:text-6xl font-bold leading-snug md:leading-tight text-gray-900"
+          >
+            One Stop Solution for {" "}
+            <span> used </span>
+            <span className="text-blue-600">Industrial Machines</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-lg md:text-xl text-gray-600 max-w-lg"
+          >
+            Fully operational used industrial machines reconditioned
+            to like-new performance. Backed by genuine components,
+            certified processes, and nationwide support.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="flex flex-col sm:flex-row gap-4"
+          >
+            <Button
+              size="lg"
+              className="bg-blue-600 hover:bg-blue-700 px-8"
+              asChild
+            >
+              <Link href="/get-started">Get Started</Link>
+            </Button>
+            <Link href="/buy" passHref>
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-white hover:border-blue-600 px-8"
+            >
+              View Inventory
+            </Button>
+            </Link>
+          </motion.div>
+
+          {/* Location & Warranty */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="mt-6 flex flex-col sm:flex-row gap-6 text-gray-500 text-sm"
+          >
+            <div className="flex items-center gap-2">
+              <MapPin className="h-4 w-4" />
+              Mumbai, Bengaluru & Surat Operations
             </div>
-            <div className="flex flex-col gap-3 sm:flex-row justify-center lg:justify-start">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 w-full sm:w-auto">
-                Get Started
-              </Button>
-              <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                View Our Inventory
-              </Button>
+            <div className="flex items-center gap-2">
+              <Shield className="h-4 w-4" />
+              1-Year Warranty
             </div>
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-2 sm:space-y-0 sm:space-x-4 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-1">
-                <MapPin className="h-4 w-4" />
-                <span>Mumbai & Surat Operations</span>
-              </div>
-              <div className="flex items-center space-x-1">
-                <Shield className="h-4 w-4" />
-                <span>1-Year Warranty</span>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center justify-center order-1 lg:order-2">
-            <div className="w-full max-w-md lg:max-w-none">
-              <Image
-                src="https://images.unsplash.com/photo-1522753004031-df14a39b2248"
-                width={600}
-                height={400}
-                alt="Industrial weaving machines"
-                className="w-full h-auto aspect-video rounded-xl object-cover shadow-lg"
-                priority
-              />
-            </div>
-          </div>
+          </motion.div>
         </div>
+
+        {/* ---------- RIGHT IMAGE (Centered & Styled) ---------- */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="flex justify-center md:justify-end"
+        >
+          <Image
+            src="/images/HeroSectionPic.jpg"
+            alt="Industrial Machinery"
+            width={700}
+            height={550}
+            priority
+            className="rounded-2xl shadow-lg object-cover w-full h-auto max-w-lg md:max-w-xl"
+          />
+        </motion.div>
       </div>
     </section>
-  )
+  );
 }
