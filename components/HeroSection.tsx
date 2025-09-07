@@ -9,6 +9,7 @@ import Image from "next/image";
 
 export function HeroSection() {
   const [offsetY, setOffsetY] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setOffsetY(window.scrollY);
@@ -32,6 +33,8 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }} 
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            onAnimationComplete={() => setHasAnimated(true)}
             className="text-4xl sm:text-5xl md:text-6xl font-bold leading-snug md:leading-tight text-gray-900"
           >
             One Stop Solution for {" "}
@@ -43,6 +46,7 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
+            viewport={{ once: true }}
             className="text-lg md:text-xl text-gray-600 max-w-lg"
           >
             Fully operational used industrial machines reconditioned
@@ -55,6 +59,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
+            viewport={{ once: true }}
             className="flex flex-col sm:flex-row gap-4"
           >
             <Button
@@ -62,16 +67,16 @@ export function HeroSection() {
               className="bg-blue-600 hover:bg-blue-700 px-8"
               asChild
             >
-              <Link href="/get-started">Get Started</Link>
+              <Link href="/">Get Started</Link>
             </Button>
             <Link href="/buy" passHref>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-white hover:border-blue-600 px-8"
-            >
-              View Inventory
-            </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-white hover:border-blue-600 px-8"
+              >
+                View Inventory
+              </Button>
             </Link>
           </motion.div>
 
@@ -80,6 +85,7 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
+            viewport={{ once: true }}
             className="mt-6 flex flex-col sm:flex-row gap-6 text-gray-500 text-sm"
           >
             <div className="flex items-center gap-2">
@@ -98,6 +104,7 @@ export function HeroSection() {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
           className="flex justify-center md:justify-end"
         >
           <Image

@@ -27,7 +27,7 @@ export default function BuyPage() {
       <header className="fixed top-0 w-full z-50 bg-white shadow-md">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           {/* Logo */}
-          <div className="flex items-center gap-2 flex-shrink-0">
+          <div className="flex items-center justify-center gap-2 flex-shrink-0">
             <Image
               src="/images/BrandLogo.png" 
               alt="Requip Logo"
@@ -36,7 +36,7 @@ export default function BuyPage() {
               className="object-contain"
               priority
             />
-            <Link href="/" className="text-lg md:text-2xl font-bold text-blue-600 font-ethnocentric items-center">
+            <Link href="/" className="text-lg md:text-2xl font-bold text-blue-600 font-ethnocentric flex items-center">
                 REQUIP
             </Link>
           </div>

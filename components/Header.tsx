@@ -15,7 +15,22 @@ import { useState } from "react"
 import Image from 'next/image';
 
 export default function Header() {
+  const [isSheetOpen, setIsSheetOpen] = useState(false)
   const [openMobileDropdown, setOpenMobileDropdown] = useState(false)
+  const [openMobileSubmenus, setOpenMobileSubmenus] = useState({
+    textile: false
+  })
+
+  const toggleMobileSubmenu = (submenu: keyof typeof openMobileSubmenus) => {
+    setOpenMobileSubmenus(prev => ({
+      ...prev,
+      [submenu]: !prev[submenu]
+    }))
+  }
+
+  const handleNavClick = () => {
+    setIsSheetOpen(false)
+  }
 
   return (
     <header className="sticky top-0 z-[999] w-full bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-dashed border-gray-300">
@@ -29,10 +44,10 @@ export default function Header() {
             alt="Requip Logo"
             width={35}
             height={35}
-            className="object-contain item-center"
+            className="object-contain"
             priority
           />
-          <Link href="/" className="text-lg md:text-2xl font-bold text-blue-600 font-ethnocentric item-center">
+          <Link href="/" className="text-lg md:text-2xl font-bold text-blue-600 font-ethnocentric flex items-center">
             REQUIP
           </Link>
         </div>
@@ -184,7 +199,7 @@ export default function Header() {
 
         {/* Mobile Menu */}
         <div className="md:hidden">
-          <Sheet>
+          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
                 <Menu className="h-8 w-8" />
@@ -193,11 +208,11 @@ export default function Header() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <SheetTitle className="text-lg font-bold text-blue-600">Requip</SheetTitle>
               <nav className="flex flex-col space-y-4 mt-8">
-                <Link href="#home" className="text-sm font-medium hover:text-blue-600 transition-colors">
+                <Link href="#home" className="text-sm font-medium hover:text-blue-600 transition-colors" onClick={handleNavClick}>
                   Home
                 </Link>
 
-                {/* Mobile Industrial Machines Accordion */}
+                {/* Mobile Industrial Machines Accordion - Matching Desktop Structure */}
                 <div>
                   <button
                     onClick={() => setOpenMobileDropdown(!openMobileDropdown)}
@@ -209,72 +224,53 @@ export default function Header() {
 
                   {openMobileDropdown && (
                     <div className="mt-2 ml-3 space-y-2">
+                      {/* Textile Machinery */}
                       <div>
-                        <p className="text-xs font-semibold text-gray-500">Textile Machinery</p>
-                        {["Spinning", "Weaving", "Knitting", "Processing"].map((item) => (
-                          <Link
-                            key={item}
-                            href={`/category/textile/${item.toLowerCase()}`}
-                            className="block text-sm text-gray-600 hover:text-blue-600 ml-3"
-                          >
-                            {item}
-                          </Link>
-                        ))}
+                        <button
+                          onClick={() => toggleMobileSubmenu('textile')}
+                          className="w-full flex justify-between items-center text-sm font-semibold text-gray-800 hover:text-blue-600 py-2"
+                        >
+                          Textile Machinery
+                          <ChevronRight className={`h-4 w-4 transition-transform ${openMobileSubmenus.textile ? "rotate-90" : ""}`} />
+                        </button>
+                        {openMobileSubmenus.textile && (
+                          <div className="ml-3 space-y-1">
+                            {["Weaving"].map((item) => (
+                              <Link
+                                key={item}
+                                href={`/category/textile/${item.toLowerCase()}`}
+                                className="block text-sm text-gray-600 hover:text-blue-600 py-1"
+                                onClick={handleNavClick}
+                              >
+                                {item}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
                       </div>
-                      <div>
-                        <p className="text-xs font-semibold text-gray-500">Packing Machinery</p>
-                        {["Food", "Beverage", "Industrial"].map((item) => (
-                          <Link
-                            key={item}
-                            href={`/category/packing/${item.toLowerCase()}`}
-                            className="block text-sm text-gray-600 hover:text-blue-600 ml-3"
-                          >
-                            {item} Packing
-                          </Link>
-                        ))}
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold text-gray-500">Machine Tools</p>
-                        {["CNC", "Lathe", "Milling"].map((item) => (
-                          <Link
-                            key={item}
-                            href={`/category/tools/${item.toLowerCase()}`}
-                            className="block text-sm text-gray-600 hover:text-blue-600 ml-3"
-                          >
-                            {item} Machines
-                          </Link>
-                        ))}
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold text-gray-500">Embossing Machinery</p>
-                        {["Leather", "Paper", "Fabric"].map((item) => (
-                          <Link
-                            key={item}
-                            href={`/category/embossing/${item.toLowerCase()}`}
-                            className="block text-sm text-gray-600 hover:text-blue-600 ml-3"
-                          >
-                            {item}
-                          </Link>
-                        ))}
-                      </div>
+
+                      {/* Additional machinery categories can be uncommented here following the same pattern */}
                     </div>
                   )}
                 </div>
 
-                <Link href="#choose" className="text-sm font-medium hover:text-blue-600 transition-colors">
+                <Link href="#choose" className="text-sm font-medium hover:text-blue-600 transition-colors" onClick={handleNavClick}>
                   Why Choose Us
                 </Link>
-                <Link href="#process" className="text-sm font-medium hover:text-blue-600 transition-colors">
+                <Link href="#process" className="text-sm font-medium hover:text-blue-600 transition-colors" onClick={handleNavClick}>
                   Our Process
                 </Link>
-                <Link href="#contact" className="text-sm font-medium hover:text-blue-600 transition-colors">
+                <Link href="/contact" className="text-sm font-medium hover:text-blue-600 transition-colors" onClick={handleNavClick}>
                   Contact Us
                 </Link>
+                <Link href="/career" className="text-sm font-medium hover:text-blue-600 transition-colors" onClick={handleNavClick}>
+                  Careers
+                </Link>
                 <div className="flex gap-3 mt-6">
-                  <Link href="/buy" className="flex-1 text-center px-3 py-2 rounded-md bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 transition">
+                  <Link href="/buy" className="flex-1 text-center px-3 py-2 rounded-md bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 transition" onClick={handleNavClick}>
                     Buy
                   </Link>
-                  <Link href="/sell" className="flex-1 text-center px-3 py-2 rounded-md bg-yellow-400 text-blue-900 font-semibold text-sm hover:bg-yellow-300 transition">
+                  <Link href="/sell" className="flex-1 text-center px-3 py-2 rounded-md bg-yellow-400 text-blue-900 font-semibold text-sm hover:bg-yellow-300 transition" onClick={handleNavClick}>
                     Sell
                   </Link>
                 </div>
