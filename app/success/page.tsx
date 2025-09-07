@@ -1,9 +1,10 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-export default function SuccessPage() {
+function SuccessContent() {
   const searchParams = useSearchParams();
   const type = searchParams.get("type");
 
@@ -13,10 +14,10 @@ export default function SuccessPage() {
       : type === "buy"
       ? "Your buy request has been submitted successfully."
       : type === "contact"
-      ? "Thank you for contacting us! We’ll respond shortly."
+      ? "Thank you for contacting us! We'll respond shortly."
       : type === "career"
-      ? "Thank you for applying. We’ll review your application soon."
-      : "Thank you for applying. We’ll review your application soon. Your submission has been received successfully.";
+      ? "Thank you for applying. We'll review your application soon."
+      : "Thank you for applying. We'll review your application soon. Your submission has been received successfully.";
 
   const heading =
     type === "sell"
@@ -49,5 +50,27 @@ export default function SuccessPage() {
         </Link>
       </div>
     </div>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-green-50 px-4">
+      <div className="bg-white p-8 rounded-2xl shadow-lg text-center max-w-md w-full">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded mb-6"></div>
+          <div className="h-10 bg-gray-200 rounded"></div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function SuccessPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <SuccessContent />
+    </Suspense>
   );
 }
