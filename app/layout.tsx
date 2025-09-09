@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import { Toaster } from 'sonner'
 import './globals.css'
+import { Analytics } from '@vercel/analytics/react';
 
 const ethnocentric = localFont({
   src: '../public/fonts/ethnocentric.otf',
@@ -9,8 +10,8 @@ const ethnocentric = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'Requip App',
-  description: 'Created with next.js',
+  title: 'Welcome to Requip',
+  description: 'Your One-Stop Solution for Quality Used Industrial Machines',
 }
 
 export default function RootLayout({
@@ -37,6 +38,8 @@ export default function RootLayout({
             },
           }}
         />
+        <Analytics />
+
       </body>
     </html>
   )
