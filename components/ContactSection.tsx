@@ -25,30 +25,50 @@ export function ContactSection() {
             <Card>
               <CardHeader>
                 <CardTitle>Contact Information</CardTitle>
-                <CardDescription>Reach out to us directly through any of these channels.</CardDescription>
+                <CardDescription>
+                  Reach out to us directly through any of these channels.
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="flex items-center space-x-3">
+
+                {/* Phone */}
+                <a
+                  href="tel:+918062178569"
+                  className="flex items-center space-x-3 hover:bg-gray-50 p-2 rounded-md transition"
+                >
                   <Phone className="h-5 w-5 text-blue-600" />
                   <div>
                     <p className="font-medium">Phone</p>
-                    <p className="text-sm text-muted-foreground">+91 8062178569</p>
+                    <p className="text-sm text-muted-foreground">+91 9972860913</p>
                   </div>
-                </div>
-                <div className="flex items-center space-x-3">
+                </a>
+
+                {/* Email */}
+                <a
+                  href="mailto:enquiry@requip.in"
+                  className="flex items-center space-x-3 hover:bg-gray-50 p-2 rounded-md transition"
+                >
                   <Mail className="h-5 w-5 text-blue-600" />
                   <div>
                     <p className="font-medium">Email</p>
                     <p className="text-sm text-muted-foreground">enquiry@requip.in</p>
                   </div>
-                </div>
-                <div className="flex items-center space-x-3">
+                </a>
+
+                {/* WhatsApp */}
+                <a
+                  href="https://wa.me/919972860913" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-3 hover:bg-gray-50 p-2 rounded-md transition"
+                >
                   <MessageCircleMore className="h-5 w-5 text-blue-600" />
                   <div>
                     <p className="font-medium">WhatsApp</p>
-                    <p className="text-sm text-muted-foreground">80621-78569</p>
+                    <p className="text-sm text-muted-foreground">+91 80621 78569</p>
                   </div>
-                </div>
+                </a>
+
               </CardContent>
             </Card>
 

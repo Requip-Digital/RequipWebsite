@@ -12,6 +12,11 @@ const ethnocentric = localFont({
 export const metadata: Metadata = {
   title: 'Welcome to Requip',
   description: 'Your One-Stop Solution for Quality Used Industrial Machines',
+  icons: {
+    icon: '/favicon.ico',      
+    shortcut: '/favicon.ico',  
+    apple: '/favicon.ico',     
+  },
 }
 
 export default function RootLayout({
@@ -39,7 +44,6 @@ export default function RootLayout({
           }}
         />
         <Analytics />
-
       </body>
     </html>
   )
