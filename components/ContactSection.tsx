@@ -65,7 +65,7 @@ export function ContactSection() {
                   <MessageCircleMore className="h-5 w-5 text-blue-600" />
                   <div>
                     <p className="font-medium">WhatsApp</p>
-                    <p className="text-sm text-muted-foreground">+91 80621 78569</p>
+                    <p className="text-sm text-muted-foreground">+91 9972860913</p>
                   </div>
                 </a>
 
