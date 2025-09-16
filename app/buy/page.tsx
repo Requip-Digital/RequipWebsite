@@ -7,18 +7,19 @@ import BuyMachineForm from "@/components/BuyMachineForm";
 import { Footer } from "@/components/Footer";
 import StepByStepProcess from "@/components/BuyingStepProcess";
 import PageBanner from "@/components/BannerPage";
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function BuyPage() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const logos = [
-    { src: "/images/ToyotaLogo.png", alt: "Toyota" },
-    { src: "/images/PicanolLogo.png", alt: "Picanol" },
-    { src: "/images/TsudokomaLogo.png", alt: "Tsudokoma" },
-    { src: "/images/SometLogo.png", alt: "Somet" },
-    { src: "/images/VamatexLogo.png", alt: "Vamatex" },
-    { src: "/images/ItemaLogo.png", alt: "Itema" },
+  // Brand names instead of logos
+  const brands = [
+    "Toyota",
+    "Picanol",
+    "Tsudokoma",
+    "Somet",
+    "Vamatex",
+    "Itema",
   ];
 
   return (
@@ -29,25 +30,38 @@ export default function BuyPage() {
           {/* Logo */}
           <div className="flex items-center justify-center gap-2 flex-shrink-0">
             <Image
-              src="/images/BrandLogo.png" 
+              src="/images/BrandLogo.png"
               alt="Requip Logo"
               width={35}
               height={35}
               className="object-contain"
               priority
             />
-            <Link href="/" className="text-lg md:text-2xl font-bold text-blue-600 font-ethnocentric flex items-center">
-                REQUIP
+            <Link
+              href="/"
+              className="text-lg md:text-2xl font-bold text-blue-600 font-ethnocentric flex items-center"
+            >
+              REQUIP
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex gap-6 text-gray-700">
-            <a href="/" className="hover:text-blue-600">Home</a>
-            <a href="/buy" className="text-blue-600 font-semibold">Buy</a>
-            <a href="/sell" className="hover:text-blue-600">Sell</a>
-            <Link href="/career" className="hover:text-blue-600">Careers</Link>
-            <Link href="/contact" className="hover:text-blue-600">Contact</Link>
+            <a href="/" className="hover:text-blue-600">
+              Home
+            </a>
+            <a href="/buy" className="text-blue-600 font-semibold">
+              Buy
+            </a>
+            <a href="/sell" className="hover:text-blue-600">
+              Sell
+            </a>
+            <Link href="/career" className="hover:text-blue-600">
+              Careers
+            </Link>
+            <Link href="/contact" className="hover:text-blue-600">
+              Contact
+            </Link>
           </nav>
 
           {/* Mobile Hamburger */}
@@ -55,7 +69,12 @@ export default function BuyPage() {
             className="md:hidden text-gray-700 focus:outline-none"
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -73,11 +92,41 @@ export default function BuyPage() {
         {/* Mobile Menu */}
         {menuOpen && (
           <div className="md:hidden bg-white shadow-inner px-6 pb-4 flex flex-col gap-4">
-            <a href="/" onClick={() => setMenuOpen(false)} className="hover:text-blue-600">Home</a>
-            <a href="/buy" onClick={() => setMenuOpen(false)} className="text-blue-600 font-semibold">Buy</a>
-            <a href="/sell" onClick={() => setMenuOpen(false)} className="hover:text-blue-600">Sell</a>
-            <a href="/career" onClick={() => setMenuOpen(false)} className="hover:text-blue-600">Careers</a>
-            <a href="/contact" onClick={() => setMenuOpen(false)} className="hover:text-blue-600">Contact</a>
+            <a
+              href="/"
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-blue-600"
+            >
+              Home
+            </a>
+            <a
+              href="/buy"
+              onClick={() => setMenuOpen(false)}
+              className="text-blue-600 font-semibold"
+            >
+              Buy
+            </a>
+            <a
+              href="/sell"
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-blue-600"
+            >
+              Sell
+            </a>
+            <a
+              href="/career"
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-blue-600"
+            >
+              Careers
+            </a>
+            <a
+              href="/contact"
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-blue-600"
+            >
+              Contact
+            </a>
           </div>
         )}
       </header>
@@ -90,7 +139,6 @@ export default function BuyPage() {
       {/* ===== Main Content ===== */}
       <main className="min-h-screen bg-gray-50 flex flex-col justify-between">
         <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row gap-6 px-6 py-16">
-
           {/* Buy Form - wider */}
           <div className="order-1 md:order-2 flex-[1.5] bg-white p-8 rounded-2xl shadow-lg">
             <BuyMachineForm />
@@ -98,13 +146,13 @@ export default function BuyPage() {
 
           {/* Left Column - narrower + compact */}
           <div className="order-2 md:order-1 flex-[1] bg-white flex flex-col items-center justify-start rounded-2xl p-4 gap-4 border-2 max-w-md">
-            {/* Brand Logos */}
+            {/* Brand Names Scroller */}
             <div className="w-full overflow-hidden">
               <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">
                 We deal in top Brands
               </h3>
               <motion.div
-                className="flex gap-12"
+                className="flex gap-12 text-lg font-semibold text-gray-700 "
                 animate={{ x: ["0%", "-100%"] }}
                 transition={{
                   repeat: Infinity,
@@ -112,13 +160,10 @@ export default function BuyPage() {
                   ease: "linear",
                 }}
               >
-                {[...logos, ...logos].map((logo, i) => (
-                  <img
-                    key={i}
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="h-8 sm:h-10 object-contain flex-shrink-0"
-                  />
+                {[...brands, ...brands].map((brand, i) => (
+                  <span key={i} className="flex-shrink-0">
+                    {brand}
+                  </span>
                 ))}
               </motion.div>
             </div>
