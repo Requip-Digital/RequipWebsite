@@ -14,7 +14,7 @@ export default function RequipLanding() {
       <Header />
 
       
-      <main className="flex-1">
+      <main className="flex flex-col min-h-screen overflow-x-hidden">
         <ParallaxLayout>
           <ScrollAnimation speed={0.1} fullInitialOpacity>
             <HeroSection />
