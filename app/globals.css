@@ -12,6 +12,10 @@ body {
   }
 }
 
+.hero {
+  overflow: hidden;   /* hides both horizontal & vertical scrollbars */
+}
+
 html {
   scroll-behavior: smooth;
 }
