@@ -61,7 +61,7 @@ export default function StepByStepProcess() {
       </h2>
 
       <motion.div
-        className="relative flex flex-col gap-8" // ⬅ Increased from gap-5 → gap-8 (32px)
+        className="relative flex flex-col gap-8" 
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
@@ -78,7 +78,7 @@ export default function StepByStepProcess() {
           >
             {/* Icon */}
             <motion.div
-              className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 text-blue-600 shrink-0 relative z-10"
+              className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 text-amber-600 shrink-0 relative z-10"
               variants={stepVariants}
             >
               <step.icon size={24} />

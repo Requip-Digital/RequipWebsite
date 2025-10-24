@@ -3,6 +3,13 @@ import localFont from 'next/font/local'
 import { Toaster } from 'sonner'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react';
+import { Raleway } from 'next/font/google';
+
+const raleway = Raleway({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-raleway',
+});
 
 const ethnocentric = localFont({
   src: '../public/fonts/ethnocentric.otf',
@@ -25,8 +32,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={ethnocentric.variable}>
+    <html lang="en" className={`${ethnocentric.variable} ${raleway.variable}`}>
+      <body className="font-raleway">
         {children}
         <Toaster 
           position="top-center"
