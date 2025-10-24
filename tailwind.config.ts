@@ -20,6 +20,8 @@ const config: Config = {
   		},
   		fontFamily: {
   			ethnocentric: ['var(--font-ethnocentric)'],
+  			raleway: ['var(--font-raleway)', 'sans-serif'],
+  			avenir: ['Avenir', 'Helvetica', 'Arial', 'sans-serif'], // Added Avenir
   		},
   		colors: {
   			background: 'hsl(var(--background))',
