@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, cloneElement } from "react"; // Added cloneElement import
 import { motion, Variants } from "framer-motion";
 import { 
   ListCheck, 
@@ -214,7 +214,7 @@ export default function SellPage() {
 
   const StatsSection = () => (
     <motion.div 
-      className="grid grid-cols-3 gap-4 mb-12"
+      className="hidden md:grid grid-cols-3 gap-4 mb-12"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
@@ -242,17 +242,17 @@ export default function SellPage() {
   );
 
   const HeroSection = () => (
-    <div className="relative py-20 px-6 mt-16"> {/* Added mt-16 for header spacing */}
+    <div className="relative py-12 md:py-20 px-6 mt-16">
       <div className="max-w-4xl mx-auto text-center">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 rounded-2xl px-6 py-3 backdrop-blur-sm mb-8"
+          className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 rounded-2xl px-4 md:px-6 py-2 md:py-3 backdrop-blur-sm mb-6 md:mb-8"
         >
           <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
-          <span className="text-amber-300 text-sm font-semibold">
+          <span className="text-amber-300 text-xs md:text-sm font-semibold">
             🚀 Get Top Value for Your Equipment
           </span>
         </motion.div>
@@ -262,7 +262,7 @@ export default function SellPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+          className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight"
         >
           Sell Your{" "}
           <span className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
@@ -274,7 +274,7 @@ export default function SellPage() {
         
         {/* Description */}
         <motion.p 
-          className="text-xl text-gray-300 mb-12 leading-relaxed max-w-2xl mx-auto"
+          className="text-base md:text-xl text-gray-300 mb-8 md:mb-12 leading-relaxed max-w-2xl mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
@@ -283,20 +283,20 @@ export default function SellPage() {
           Get competitive offers, secure transactions, and expert guidance throughout the selling process.
         </motion.p>
 
-        {/* Stats */}
+        {/* Stats - Now hidden on mobile */}
         <StatsSection />
 
         {/* Key Features */}
         <motion.div 
-          className="flex flex-wrap justify-center gap-4 mb-12"
+          className="flex flex-wrap justify-center gap-2 md:gap-4 mb-8 md:mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
         >
           {["No Hidden Fees", "Seamless Transactions", "Free Inspection", "Verified Buyers"].map((feature, index) => (
-            <div key={index} className="flex items-center gap-2 bg-white/5 rounded-lg px-4 py-3 border border-white/10">
-              <CheckCircle className="w-4 h-4 text-amber-400" />
-              <span className="text-sm text-white font-medium">{feature}</span>
+            <div key={index} className="flex items-center gap-1 md:gap-2 bg-white/5 rounded-lg px-2 md:px-4 py-1.5 md:py-3 border border-white/10 text-xs md:text-sm">
+              <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-amber-400" />
+              <span className="text-white font-medium">{feature}</span>
             </div>
           ))}
         </motion.div>
@@ -310,11 +310,11 @@ export default function SellPage() {
         >
           <button 
             onClick={redirectToWhatsApp}
-            className="group relative bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-12 py-4 rounded-2xl font-semibold text-lg flex items-center justify-center gap-3 transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-amber-500/25"
+            className="group relative bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-6 md:px-12 py-3 md:py-4 rounded-xl md:rounded-2xl font-semibold text-base md:text-lg flex items-center justify-center gap-2 md:gap-3 transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-amber-500/25"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
             <span>Get Instant Valuation</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </motion.div>
       </div>
@@ -322,35 +322,35 @@ export default function SellPage() {
   );
 
   const ProcessSection = () => (
-    <div className="py-20 px-6 bg-gradient-to-b from-gray-900 to-gray-800">
+    <div className="py-12 md:py-20 px-6 bg-gradient-to-b from-gray-900 to-gray-800">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
             Simple <span className="text-amber-500">4-Step</span> Process
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-base md:text-xl text-gray-300 max-w-2xl mx-auto">
             Sell your machinery quickly and securely with our streamlined process
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {PROCESS_STEPS.map((step, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10 hover:border-amber-500/30 transition-all duration-300 text-center group"
+              className="bg-white/5 backdrop-blur-lg rounded-xl md:rounded-2xl p-4 md:p-6 border border-white/10 hover:border-amber-500/30 transition-all duration-300 text-center group"
             >
-              <div className="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center text-white font-bold text-base md:text-lg mb-3 md:mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
                 {step.step}
               </div>
-              <h3 className="text-white font-semibold text-lg mb-3">{step.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">{step.description}</p>
+              <h3 className="text-white font-semibold text-base md:text-lg mb-2 md:mb-3">{step.title}</h3>
+              <p className="text-gray-400 text-xs md:text-sm leading-relaxed">{step.description}</p>
             </motion.div>
           ))}
         </div>
@@ -359,17 +359,17 @@ export default function SellPage() {
   );
 
   const FormSection = () => (
-    <div className="py-20 px-6">
+    <div className="py-12 md:py-20 px-4 md:px-6">
       <div className="max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4">
             Get Your <span className="text-amber-500">Best Offer</span>
           </h2>
-          <p className="text-xl text-gray-300">
+          <p className="text-base md:text-xl text-gray-300">
             Fill in your machinery details 
           </p>
         </motion.div>
@@ -380,7 +380,7 @@ export default function SellPage() {
           transition={{ delay: 0.3 }}
           className="relative"
         >
-          <div className="relative bg-gradient-to-br from-gray-800/40 to-gray-900/60 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 shadow-2xl overflow-hidden">
+          <div className="relative bg-gradient-to-br from-gray-800/40 to-gray-900/60 backdrop-blur-2xl rounded-2xl md:rounded-3xl p-4 md:p-8 border border-white/10 shadow-2xl overflow-hidden">
             {/* Form Background Pattern */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.1),transparent_50%)]" />
             
@@ -398,23 +398,23 @@ export default function SellPage() {
   );
 
   const BenefitsSection = () => (
-    <div className="py-20 px-6 bg-gradient-to-b from-gray-800 to-gray-900">
+    <div className="py-12 md:py-20 px-6 bg-gradient-to-b from-gray-800 to-gray-900">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
             Why Choose <span className="text-amber-500">Requip</span>?
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-base md:text-xl text-gray-300 max-w-2xl mx-auto">
             We've revolutionized machinery selling with transparent processes and competitive pricing
           </p>
         </motion.div>
 
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
           variants={CONTAINER_VARIANTS}
           initial="hidden"
           whileInView="show"
@@ -423,17 +423,17 @@ export default function SellPage() {
           {BENEFITS.map((benefit, index) => (
             <motion.div
               key={index}
-              className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 group cursor-pointer"
+              className="bg-white/5 backdrop-blur-lg rounded-xl md:rounded-2xl p-4 md:p-6 border border-white/10 hover:border-white/20 transition-all duration-300 group cursor-pointer"
               variants={CARD_VARIANTS}
               whileHover={{ scale: 1.02, y: -5 }}
             >
-              <div className="flex items-start gap-4">
-                <div className={`p-3 rounded-xl bg-gradient-to-r ${benefit.gradient} shadow-lg flex-shrink-0`}>
-                  {benefit.icon}
+              <div className="flex items-start gap-3 md:gap-4">
+                <div className={`p-2 md:p-3 rounded-lg md:rounded-xl bg-gradient-to-r ${benefit.gradient} shadow-lg flex-shrink-0`}>
+                  {cloneElement(benefit.icon, { className: "w-6 h-6 md:w-8 md:h-8" })}
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">{benefit.label}</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">{benefit.description}</p>
+                  <h3 className="text-base md:text-lg font-semibold text-white mb-1 md:mb-2">{benefit.label}</h3>
+                  <p className="text-gray-300 text-xs md:text-sm leading-relaxed">{benefit.description}</p>
                 </div>
               </div>
             </motion.div>
@@ -444,31 +444,31 @@ export default function SellPage() {
   );
 
   const FinalCTASection = () => (
-    <div className="py-20 px-6">
+    <div className="py-12 md:py-20 px-4 md:px-6">
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/20 rounded-3xl p-12 backdrop-blur-lg"
+          className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/20 rounded-2xl md:rounded-3xl p-6 md:p-12 backdrop-blur-lg"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
             Ready to Get the Best Value?
           </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-base md:text-xl text-gray-300 mb-6 md:mb-8 max-w-2xl mx-auto">
             Join satisfied sellers who've maximized their returns with Requip
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
             <button 
               onClick={redirectToWhatsApp}
-              className="group bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-12 py-4 rounded-2xl font-semibold text-lg flex items-center justify-center gap-3 transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-amber-500/25"
+              className="group bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-6 md:px-12 py-3 md:py-4 rounded-xl md:rounded-2xl font-semibold text-base md:text-lg flex items-center justify-center gap-2 md:gap-3 transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-amber-500/25"
             >
               <span>Start Selling Today</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="group border-2 border-gray-600 hover:border-amber-500 text-white px-8 py-4 rounded-2xl font-semibold flex items-center justify-center gap-3 transition-all duration-300 hover:bg-white/5 backdrop-blur-sm">
+            <button className="group border-2 border-gray-600 hover:border-amber-500 text-white px-4 md:px-8 py-3 md:py-4 rounded-xl md:rounded-2xl font-semibold flex items-center justify-center gap-2 md:gap-3 transition-all duration-300 hover:bg-white/5 backdrop-blur-sm text-sm md:text-base">
               <div className="text-left">
                 <div className="font-semibold">Call Us Now</div>
-                <div className="text-sm text-gray-400">+91 99728 60913</div>
+                <div className="text-xs md:text-sm text-gray-400">+91 99728 60913</div>
               </div>
             </button>
           </div>
@@ -490,7 +490,7 @@ export default function SellPage() {
         
         <div className="relative z-10">
           {/* Hero Section - Added proper spacing for fixed header */}
-          <section id="hero" className="scroll-mt-20"> {/* Added scroll-margin for anchor links */}
+          <section id="hero" className="scroll-mt-20">
             <HeroSection />
           </section>
 

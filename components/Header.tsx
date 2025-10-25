@@ -35,9 +35,9 @@ export default function Header() {
     { href: "/", label: "Home", id: "home" },
     { href: "/buy", label: "Buy", id: "buy" },
     { href: "/sell", label: "Sell", id: "sell" },
-    { href: "/service", label: "Service", id: "service" },
+    { href: "/coming-soon", label: "Service", id: "service" },
     { href: "/about", label: "About", id: "about" },
-    { href: "/blogs", label: "Blogs", id: "blogs" },
+    { href: "/coming-soon", label: "Blogs", id: "blogs" },
     { href: "/contact", label: "Contact", id: "contact" },
   ];
 

@@ -120,13 +120,13 @@ export default function AboutSection(): JSX.Element {
     <>
       {/* Hero Section - Cyan to Blue Gradient */}
       <section className="relative w-full min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0B3B61] via-[#0B3B61] to-amber-600">
-        {/* Background Elements */}
-        <div className="absolute inset-0">
+        {/* Fixed: Background Elements with proper z-index */}
+        <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
           
           {/* Animated Orbs - Cyan & Blue */}
           <motion.div
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl z-0"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.3, 0.6, 0.3],
@@ -138,7 +138,7 @@ export default function AboutSection(): JSX.Element {
             }}
           />
           <motion.div
-            className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"
+            className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl z-0"
             animate={{
               scale: [1.2, 1, 1.2],
               opacity: [0.4, 0.7, 0.4],
@@ -151,7 +151,7 @@ export default function AboutSection(): JSX.Element {
             }}
           />
           <motion.div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-400/5 rounded-full blur-3xl"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-400/5 rounded-full blur-3xl z-0"
             animate={{
               scale: [1, 1.3, 1],
               opacity: [0.2, 0.5, 0.2],
@@ -165,16 +165,19 @@ export default function AboutSection(): JSX.Element {
           />
         </div>
 
-        {/* Hero Content */}
+        {/* Fixed: Hero Content with higher z-index */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 text-center">
+          {/* Updated Mobile-Optimized Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-6"
+            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3 py-1.5 lg:px-4 lg:py-2 mb-4 lg:mb-6 mx-4 lg:mx-0"
           >
-            <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></div>
-            <span className="text-sm text-white/80 font-medium">Trusted by Textile Manufacturers Across India</span>
+            <div className="w-1.5 h-1.5 lg:w-2 lg:h-2 bg-amber-400 rounded-full animate-pulse flex-shrink-0"></div>
+            <span className="text-xs lg:text-sm text-white/80 font-medium whitespace-nowrap">
+              Trusted by Textile Manufacturers Across India
+            </span>
           </motion.div>
 
           <motion.h1 
@@ -198,18 +201,18 @@ export default function AboutSection(): JSX.Element {
             Weaving Machine Specialists – Redefining how the textile industry buys and sells machinery
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Fixed mobile sizing */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center"
           >
-            {/* Updated Get Free Consultation Button with Gradient Box */}
+            {/* Updated Get Free Consultation Button with responsive sizing */}
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative bg-gradient-to-r to-[#0B3B61] from-amber-500 text-white px-8 py-4 rounded-2xl font-semibold shadow-2xl overflow-hidden transition-all duration-300 hover:bg-gradient-to-r hover:from-[#0B3B61] hover:to-amber-600"
+              className="group relative bg-gradient-to-r to-[#0B3B61] from-amber-500 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-2xl font-semibold shadow-2xl overflow-hidden transition-all duration-300 hover:bg-gradient-to-r hover:from-[#0B3B61] hover:to-amber-600 text-sm sm:text-base w-full sm:w-auto"
             >
               <span className="relative z-10">Get Instant Consultation</span>
             </motion.button>
@@ -217,47 +220,25 @@ export default function AboutSection(): JSX.Element {
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/20 transition-all duration-300"
+              className="group relative bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-2xl font-semibold hover:bg-white/20 transition-all duration-300 text-sm sm:text-base w-full sm:w-auto"
             >
               <span className="relative z-10">Browse Inventory</span>
             </motion.button>
           </motion.div>
         </div>
 
-        {/* Enhanced Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 15, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="text-white/80 text-lg flex flex-col items-center gap-2"
-          >
-            <div className="flex flex-col items-center gap-2">
-              <div className="w-8 h-14 border-3 border-white/40 rounded-full flex justify-center">
-                <motion.div
-                  animate={{ y: [0, 20, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="w-2 h-4 bg-white/70 rounded-full mt-3"
-                />
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
+        {/* Scroll Indicator Removed */}
       </section>
 
-      {/* Stats Section */}
-      <section className="relative -mt-20 z-20">
+      {/* Stats Section - Fixed z-index hierarchy with adjusted mobile positioning */}
+      <section className="relative z-20 -mt-12 lg:-mt-20">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20 grid grid-cols-2 lg:grid-cols-4 gap-8"
+            className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20 grid grid-cols-2 lg:grid-cols-4 gap-8 relative z-30"
           >
             {stats.map((stat, index) => (
               <motion.div
@@ -279,7 +260,7 @@ export default function AboutSection(): JSX.Element {
       </section>
 
       {/* Mission Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/30">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/30 relative z-10">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -306,19 +287,19 @@ export default function AboutSection(): JSX.Element {
                 trusted partner in machinery management. Every machine listed with us is carefully verified, every 
                 deal is handled with integrity, and every client relationship is built to last.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                {/* Updated Explore Our Machinery Button with Gradient Box */}
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                {/* Updated Explore Our Machinery Button with responsive sizing */}
                 <motion.button 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="group relative bg-gradient-to-r from-[#0B3B61] to-amber-500 text-white px-8 py-4 rounded-2xl font-semibold shadow-2xl overflow-hidden transition-all duration-300 hover:bg-gradient-to-r hover:from-amber-500 hover:to-[#0B3B61]"
+                  className="group relative bg-gradient-to-r from-[#0B3B61] to-amber-500 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-2xl font-semibold shadow-2xl overflow-hidden transition-all duration-300 hover:bg-gradient-to-r hover:from-amber-500 hover:to-[#0B3B61] text-sm sm:text-base w-full sm:w-auto"
                 >
                   Explore Our Machinery
                 </motion.button>
                 <motion.button 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="border-2 border-[#0B3B61] text-black px-8 py-3 rounded-xl font-semibold hover:bg-[#0B3B61] hover:text-white transition-all duration-300"
+                  className="border-2 border-[#0B3B61] text-black px-6 py-3 sm:px-8 sm:py-3 rounded-xl font-semibold hover:bg-[#0B3B61] hover:text-white transition-all duration-300 text-sm sm:text-base w-full sm:w-auto"
                 >
                   Learn More
                 </motion.button>
@@ -347,15 +328,15 @@ export default function AboutSection(): JSX.Element {
                 <div className="absolute bottom-4 left-4 w-12 h-12 bg-white/10 rounded-full"></div>
               </div>
               {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-amber-600 rounded-full opacity-20"></div>
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-amber-500 rounded-full opacity-20"></div>
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-amber-600 rounded-full opacity-20 z-0"></div>
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-amber-500 rounded-full opacity-20 z-0"></div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Values Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 relative z-10">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -400,7 +381,7 @@ export default function AboutSection(): JSX.Element {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-900/5 to-cyan-900/5">
+      <section className="py-20 bg-gradient-to-br from-blue-900/5 to-cyan-900/5 relative z-10">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -426,7 +407,7 @@ export default function AboutSection(): JSX.Element {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
-                className="bg-gradient-to-br from-[#0B3B61] to-[#134670] rounded-2xl p-8 text-white text-center shadow-xl hover:shadow-2xl transition-all duration-300 group"
+                className="bg-gradient-to-br from-[#0B3B61] to-[#134670] rounded-2xl p-8 text-white text-center shadow-xl hover:shadow-2xl transition-all duration-300 group relative z-10"
               >
                 <div className="text-white mb-4 group-hover:scale-110 transition-transform duration-300">
                   {service.icon}
@@ -441,8 +422,9 @@ export default function AboutSection(): JSX.Element {
         </div>
       </section>
 
-      {/* Team Section */}
-      {/* <section className="py-20 bg-gray-50">
+      {/* Team Section - Commented Out */}
+      {/*
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -486,17 +468,18 @@ export default function AboutSection(): JSX.Element {
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
+      */}
 
       {/* CTA Section */}
-      <section className="py-20">
+      <section className="py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-r from-[#0B3B61] to-amber-600 rounded-3xl p-12 text-center text-white shadow-2xl relative overflow-hidden"
+            className="bg-gradient-to-r from-[#0B3B61] to-amber-600 rounded-3xl p-8 sm:p-12 text-center text-white shadow-2xl relative overflow-hidden"
           >
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10">
@@ -504,26 +487,26 @@ export default function AboutSection(): JSX.Element {
             </div>
             
             <div className="relative z-10">
-              <h2 className="text-4xl font-bold mb-6">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6">
                 Ready to Transform Your Weaving Operations?
               </h2>
-              <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+              <p className="text-lg sm:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
                 Join textile manufacturers who trust Requip for their machinery needs. 
                 Experience the difference of working with true weaving machine specialists.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                {/* Updated Get Free Consultation Button with Gradient Box */}
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+                {/* Updated Get Free Consultation Button with responsive sizing */}
                 <motion.button 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="group relative bg-gradient-to-r to-amber-500 from-[#0B3B61] text-white px-8 py-4 rounded-2xl font-semibold shadow-2xl overflow-hidden transition-all duration-300 hover:bg-gradient-to-r hover:from-amber-500 hover:to-[#0B3B61]"
+                  className="group relative bg-gradient-to-r to-amber-500 from-[#0B3B61] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-2xl font-semibold shadow-2xl overflow-hidden transition-all duration-300 hover:bg-gradient-to-r hover:from-amber-500 hover:to-[#0B3B61] text-sm sm:text-base w-full sm:w-auto"
                 >
                   Get Free Consultation
                 </motion.button>
                 <motion.button 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-colors"
+                  className="border-2 border-white text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl font-semibold hover:bg-white/10 transition-colors text-sm sm:text-base w-full sm:w-auto"
                 >
                   Browse Our Inventory
                 </motion.button>
