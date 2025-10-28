@@ -158,7 +158,7 @@ export function HowWeWorkSection(): JSX.Element {
           </p>
         </motion.div>
 
-        {/* Process Steps Grid - WITH EQUAL HEIGHT CARDS */}
+        {/* Process Steps Grid - WITH UNIFORM BULLET POINT CONTAINER */}
         <div className="mx-auto grid max-w-6xl items-stretch gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {steps.map((step, index) => {
             const colors = getColorClasses(step.color);
@@ -176,8 +176,8 @@ export function HowWeWorkSection(): JSX.Element {
                   <span className="text-white font-bold text-sm">{index + 1}</span>
                 </div>
 
-                {/* Main Card - EQUAL HEIGHT IMPLEMENTATION */}
-                <div className={`bg-gray-800/30 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/50 ${colors.hoverBorder} transition-all duration-500 flex flex-col relative overflow-hidden flex-1 min-h-[400px]`}>
+                {/* Main Card - UNIFORM HEIGHT WITH CONSISTENT BULLET POINT CONTAINER */}
+                <div className={`bg-gray-800/30 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/50 ${colors.hoverBorder} transition-all duration-500 flex flex-col relative overflow-hidden h-full`}>
                   
                   {/* Icon Container */}
                   <div className={`relative z-10 w-16 h-16 ${colors.bg} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 ${colors.border}`}>
@@ -195,16 +195,18 @@ export function HowWeWorkSection(): JSX.Element {
                       {step.description}
                     </p>
                     
-                    {/* Features List */}
-                    <div className="space-y-3 mt-auto">
-                      {step.features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className="flex items-center gap-3">
-                          <div className={`w-2 h-2 ${colors.bg.replace('10', '30')} rounded-full`}></div>
-                          <span className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300">
-                            {feature}
-                          </span>
-                        </div>
-                      ))}
+                    {/* UNIFORM BULLET POINT CONTAINER - Same height for all */}
+                    <div className="mt-auto pt-4 border-t border-gray-700/50">
+                      <div className="space-y-3">
+                        {step.features.map((feature, featureIndex) => (
+                          <div key={featureIndex} className="flex items-center gap-3">
+                            <div className={`w-2 h-2 rounded-full ${colors.bg.replace('10', '30')} ${colors.text.replace('text-', 'bg-')}`}></div>
+                            <span className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300">
+                              {feature}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
@@ -243,9 +245,6 @@ export function HowWeWorkSection(): JSX.Element {
                 Get in touch
                 <ClipboardCheck className="w-5 h-5" />
               </button>
-              {/* <button className="border border-amber-600 hover:border-amber-500 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:bg-white/5">
-                View Case Studies
-              </button> */}
             </div>
           </div>
         </motion.div>
